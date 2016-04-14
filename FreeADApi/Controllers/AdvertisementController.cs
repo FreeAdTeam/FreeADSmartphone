@@ -22,12 +22,12 @@ namespace FreeADApi.Controllers
             _db = new ApplicationDbContext();
         }
         [Route("api/category/{categoryId}/advertisements", Name = "advertisementList")]
-        public IHttpActionResult Get(int categoryId = 0, string search = null, string sort = "id",string includes=null, string fields = null, int page = 1, int pageSize = maxPageSize)
+        public IHttpActionResult Get(int categoryId = 0, string search = "none", string sort = "id",string includes=null, string fields = null, int page = 1, int pageSize = maxPageSize)
         {
             try
             {
                 var Con = new ConditionViewModel<Advertisement>();
-                Con.Func = d => d.Category.LanguageId==1 && (categoryId==0 || d.CategoryId==categoryId) &&(search==null||d.KeyWord.Contains(search)) && d.Deleted==false;
+                Con.Func = d => d.Category.LanguageId==1 && (categoryId==0 || d.CategoryId==categoryId) &&(search=="none"||d.KeyWord.Contains(search)) && d.Deleted==false;
                 Con.CurrentPage = page;
                 Con.PerPageSize = pageSize;
                 var result=_db.GetSearchResult(Con,sort,includes,fields);

@@ -22,15 +22,11 @@ namespace PhoneApp
         {
 			vm.WebViewShow = false;
 			vm.IndicatorShow = true;
-			//webView.HeightRequest = 0;
-			//this.indicator.IsVisible = true;
         }
         void webviewNavigated(object sender, WebNavigatedEventArgs e)
         {
 			vm.WebViewShow = true;
 			vm.IndicatorShow = false;
-			//webView.HeightRequest = 1000;
-			//this.indicator.IsVisible = false;
         }
     }
 }

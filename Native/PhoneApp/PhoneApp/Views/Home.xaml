@@ -6,21 +6,20 @@
   	<Grid>
         <Image Source="pageGround.jpg" Aspect="AspectFill" />
 		<StackLayout x:Name="Layout" Padding="10" >
-	   	      <StackLayout Padding="0,0,0,0" Orientation="Horizontal" x:Name="SearchBox" >
-		      	<SearchBar x:Name="SearchBar" TextColor="Black" Placeholder="Search"  VerticalOptions="Start" SearchButtonPressed ="OnSearch"></SearchBar>
-		      </StackLayout>
-				<ListView x:Name="advertisementListView" ItemTapped="OnItemTapped" RowHeight="80" HasUnevenRows="True">
-			        <ListView.ItemTemplate>
-			          <DataTemplate>
-			            <ViewCell>
-			              <StackLayout>
-			                <Label Text="{Binding Keyword}" TextColor="Blue" ></Label>
-			                <Label Text="{Binding ShortDescription}" Font="11" TextColor="Black"></Label>
-			              </StackLayout>
-			            </ViewCell>
-			          </DataTemplate>
-			        </ListView.ItemTemplate>
-			      </ListView>
+	      	<SearchBar x:Name="SearchBar" TextColor="Black" Placeholder="Search"   VerticalOptions="Start" ></SearchBar>
+			<ListView x:Name="advertisementListView" ItemTapped="OnItemTapped" RowHeight="80" HasUnevenRows="True">
+		        <ListView.ItemTemplate>
+		          <DataTemplate>
+		            <ViewCell>
+		              <StackLayout>
+		                <Label Text="{Binding Keyword}" TextColor="Blue" ></Label>
+		                <Label Text="{Binding ShortDescription}" Font="11" TextColor="Black"></Label>
+		              </StackLayout>
+		            </ViewCell>
+		          </DataTemplate>
+		        </ListView.ItemTemplate>
+		      </ListView>
+		      <Picker x:Name="CategoryPicker" HorizontalOptions="Center" ></Picker>
 	    </StackLayout>
     </Grid>
   </ContentPage.Content>

@@ -11,24 +11,55 @@ namespace PhoneApp
 {
     public partial class Home : ContentPage
     {
-        MainViewModel vm;
+        HomeViewModel vm;
 		public Home()
         {
-            vm = new MainViewModel();
-			Title="Advertisement platform";
+            vm = new HomeViewModel();
+
+			BindingContext = vm;
             InitializeComponent();
+			Title="Advertisement platform";
+			CategoryPicker.Title = "Category Setting Default All";
+			CategoryPicker.Items.Add("All");
+			CategoryPicker.Items.Add("Companies");
+			CategoryPicker.Items.Add("Recruits");
+			CategoryPicker.Items.Add("RentRooms");
+			CategoryPicker.Items.Add("Products");
+			CategoryPicker.Items.Add("PersonalInfo");
+			CategoryPicker.SelectedIndexChanged += (sender, args) =>
+			{
+				var search=string.IsNullOrEmpty(SearchBar.Text)?"none":SearchBar.Text.Trim();
+				if (CategoryPicker.SelectedIndex == -1)
+				{
+					LoadData(null,search);
+				}
+				else
+				{
+					string category = CategoryPicker.Items[CategoryPicker.SelectedIndex];
+					LoadData(category,search);
+				}
+			};
+			SearchBar.SearchCommand = new Command (() => {
+				string category =CategoryPicker.SelectedIndex ==-1?null: CategoryPicker.Items[CategoryPicker.SelectedIndex];
+				var search=string.IsNullOrEmpty(SearchBar.Text)?"none":SearchBar.Text.Trim();
+				LoadData (category,search);
+			});
+			SearchBar.TextChanged += MySearchBarOnTextChanged;
             LoadData();
         }
 
-		public async void OnSearch(object sender, EventArgs e)
+		private void MySearchBarOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
 		{
-//			var temp=await GlobalAccessor.Instance.Gateway.AdminGetInventory(SearchBar.Text.Trim());
-//			fillStackLayoutList (temp);
+			// Has Cancel has been pressed?
+			if (string.IsNullOrEmpty(textChangedEventArgs.NewTextValue ))
+			{
+				string category =CategoryPicker.SelectedIndex ==-1?null: CategoryPicker.Items[CategoryPicker.SelectedIndex];
+				LoadData (category);
+			}
 		}
-        private async void LoadData()
+		private async void LoadData(string category=null,string search="none")
         {
-            advertisementListView.ItemsSource = await vm.Ads();
-			//Layout.Children.Remove (indicator);
+			advertisementListView.ItemsSource = await vm.Ads(category,search);
         }
 
         public void OnItemTapped(object o, ItemTappedEventArgs e)
