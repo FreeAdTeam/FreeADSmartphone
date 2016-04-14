@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneApp.Home">
+  <ContentPage.Content>
+  	<Grid>
+        <Image Source="pageGround.jpg" Aspect="AspectFill" />
+		<StackLayout x:Name="Layout" Padding="10" >
+	   	      <StackLayout Padding="0,0,0,0" Orientation="Horizontal" x:Name="SearchBox" >
+		      	<SearchBar x:Name="SearchBar" TextColor="Black" Placeholder="Search"  VerticalOptions="Start" SearchButtonPressed ="OnSearch"></SearchBar>
+		      </StackLayout>
+				<ListView x:Name="advertisementListView" ItemTapped="OnItemTapped" RowHeight="80" HasUnevenRows="True">
+			        <ListView.ItemTemplate>
+			          <DataTemplate>
+			            <ViewCell>
+			              <StackLayout>
+			                <Label Text="{Binding Keyword}" TextColor="Blue" ></Label>
+			                <Label Text="{Binding ShortDescription}" Font="11" TextColor="Black"></Label>
+			              </StackLayout>
+			            </ViewCell>
+			          </DataTemplate>
+			        </ListView.ItemTemplate>
+			      </ListView>
+	    </StackLayout>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

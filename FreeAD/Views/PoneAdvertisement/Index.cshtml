@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPagePhone.cshtml";
+}
+@model Advertisement
+    <style>
+        body{
+            padding:0px;
+        }
+        .portfolio-modal .modal-content {
+            padding: 10px 0;
+        }
+
+            .portfolio-modal .modal-content h1 {
+                font-size: 16px;
+            }
+            .portfolio-modal .modal-content h2 {
+                font-size: 14px;
+            }
+            .portfolio-modal .modal-content h3 {
+                font-size: 12px;
+            }
+    </style>
+<div class="portfolio-modal" aria-hidden="false">
+    <div class="modal-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body" style="text-align:left">
+                            @Html.Raw(Model.Detail)
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
