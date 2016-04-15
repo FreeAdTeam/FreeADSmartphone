@@ -2,13 +2,12 @@
 using System.ComponentModel;
 namespace PhoneApp
 {
-	public class ContactViewModel:INotifyPropertyChanged
+	public class OthersViewModel:INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 		public String URL{ get; set;}
-		public ContactViewModel ()
+		public OthersViewModel ()
 		{
-			URL="http://ouroptions.co.nz/PoneAdvertisement/contact";
 			WebViewShow = false;
 			IndicatorShow = true;
 		}

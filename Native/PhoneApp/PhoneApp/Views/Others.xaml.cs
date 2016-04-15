@@ -5,13 +5,16 @@ using Xamarin.Forms;
 
 namespace PhoneApp
 {
-	public partial class Contact : ContentPage
+	public partial class Others : ContentPage
 	{
-		ContactViewModel vm;
-		public Contact ()
+		OthersViewModel vm;
+		string para;
+		public Others (string parameter)
 		{
-			vm = new ContactViewModel ();
-			Title="Contact US";
+			para = parameter;
+			vm = new OthersViewModel ();
+			vm.URL = parameter;
+			Title=parameter.Contains("manual")?"Manual": "Contact US";
 			BindingContext = vm;
 			InitializeComponent ();
 			ConnectButton.Clicked += OnConnectClick;
@@ -19,8 +22,9 @@ namespace PhoneApp
 		void OnConnectClick(object sender, EventArgs e){
 			Device.BeginInvokeOnMainThread(() =>
 				{
-					vm = new ContactViewModel ();
-					this.Title = "Contact US";
+					vm = new OthersViewModel ();
+					vm.URL=para;
+					Title=para.Contains("manual")?"Manual": "Contact US";
 					BindingContext = vm;
 					InitializeComponent ();
 					ConnectButton.Clicked += OnConnectClick;

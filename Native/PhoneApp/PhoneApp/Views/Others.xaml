@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PhoneApp.Contact" BackgroundImage="pageGround.png">
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PhoneApp.Others" BackgroundImage="pageGround.png">
 	<ContentPage.Content>
 	    <StackLayout Padding="0">
 	    	<Button Text="No Internet,Connect again" x:Name="ConnectButton" IsVisible="{Binding ConnectShow}"></Button>

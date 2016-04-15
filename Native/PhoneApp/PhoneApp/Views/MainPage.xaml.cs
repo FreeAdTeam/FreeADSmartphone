@@ -26,7 +26,7 @@ namespace PhoneApp
             var item = e.SelectedItem as MasterPageItem;
             if (item != null)
             {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+				Detail = item.Parameter==null?new NavigationPage((Page)Activator.CreateInstance(item.TargetType)):new NavigationPage((Page)Activator.CreateInstance(item.TargetType,item.Parameter));
                 //masterPage.ListView.SelectedItem = null;
                 IsPresented = false;
             }

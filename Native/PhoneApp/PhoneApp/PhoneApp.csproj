@@ -57,21 +57,18 @@
     <Compile Include="Views\MySettings.xaml.cs">
       <DependentUpon>MySettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Contact.xaml.cs">
-      <DependentUpon>Contact.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Manual.xaml.cs">
-      <DependentUpon>Manual.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\UIComponents.cs" />
     <Compile Include="LocalDatabase\ISQLite.cs" />
     <Compile Include="LocalDatabase\LocalData.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="ViewModels\MySettingsViewModel.cs" />
     <Compile Include="ViewModels\AdvertisementDetailViewModel.cs" />
-    <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\MyListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="Views\Others.xaml.cs">
+      <DependentUpon>Others.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\OthersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
@@ -113,10 +110,7 @@
     <EmbeddedResource Include="Views\MySettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Contact.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Manual.xaml">
+    <EmbeddedResource Include="Views\Others.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -30,12 +30,14 @@ namespace PhoneApp
 			masterPageItems.Add (new MasterPageItem {
 				Title = "Manul",
 				IconSource = "manual.png",
-				TargetType = typeof(Manual)
+				TargetType = typeof(Others),
+				Parameter="http://ouroptions.co.nz/PoneAdvertisement/manual"
 			});
 			masterPageItems.Add (new MasterPageItem {
 				Title = "Contact us",
 				IconSource = "info.png",
-				TargetType = typeof(Contact)
+				TargetType = typeof(Others),
+				Parameter="http://ouroptions.co.nz/PoneAdvertisement/contact"
 			});
 			listView.ItemsSource = masterPageItems;
 		}
