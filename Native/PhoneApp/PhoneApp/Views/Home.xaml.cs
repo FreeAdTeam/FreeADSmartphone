@@ -15,7 +15,6 @@ namespace PhoneApp
 		public Home()
         {
             vm = new HomeViewModel();
-
 			BindingContext = vm;
             InitializeComponent();
 			Title="Advertisement platform";
@@ -26,41 +25,23 @@ namespace PhoneApp
 			CategoryPicker.Items.Add("RentRooms");
 			CategoryPicker.Items.Add("Products");
 			CategoryPicker.Items.Add("PersonalInfo");
+
 			CategoryPicker.SelectedIndexChanged += (sender, args) =>
 			{
-				var search=string.IsNullOrEmpty(SearchBar.Text)?"none":SearchBar.Text.Trim();
-				if (CategoryPicker.SelectedIndex == -1)
-				{
-					LoadData(null,search);
-				}
-				else
-				{
-					string category = CategoryPicker.Items[CategoryPicker.SelectedIndex];
-					LoadData(category,search);
-				}
+				var search=string.IsNullOrEmpty(vm.SearchText)?"none":vm.SearchText.Trim();
+				var categoryIndex=CategoryPicker.SelectedIndex;
+				vm.Ads(categoryIndex,search);
 			};
-			SearchBar.SearchCommand = new Command (() => {
-				string category =CategoryPicker.SelectedIndex ==-1?null: CategoryPicker.Items[CategoryPicker.SelectedIndex];
-				var search=string.IsNullOrEmpty(SearchBar.Text)?"none":SearchBar.Text.Trim();
-				LoadData (category,search);
-			});
 			SearchBar.TextChanged += MySearchBarOnTextChanged;
-            LoadData();
         }
 
 		private void MySearchBarOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
 		{
-			// Has Cancel has been pressed?
 			if (string.IsNullOrEmpty(textChangedEventArgs.NewTextValue ))
 			{
-				string category =CategoryPicker.SelectedIndex ==-1?null: CategoryPicker.Items[CategoryPicker.SelectedIndex];
-				LoadData (category);
+				vm.Ads (CategoryPicker.SelectedIndex);
 			}
 		}
-		private async void LoadData(string category=null,string search="none")
-        {
-			advertisementListView.ItemsSource = await vm.Ads(category,search);
-        }
 
         public void OnItemTapped(object o, ItemTappedEventArgs e)
         {

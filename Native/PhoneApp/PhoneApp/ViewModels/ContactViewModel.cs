@@ -8,6 +8,7 @@ namespace PhoneApp
 		public String URL{ get; set;}
 		public ContactViewModel ()
 		{
+			URL="http://ouroptions.co.nz/PoneAdvertisement/contact";
 			WebViewShow = false;
 			IndicatorShow = true;
 		}
@@ -26,6 +27,15 @@ namespace PhoneApp
 				{
 					indicatorShow = value;
 					OnPropertyChanged("IndicatorShow");
+				}
+			}
+		}
+		private bool connectShow;
+		public bool ConnectShow { get{ return connectShow; } set{
+				if (connectShow != value)
+				{
+					connectShow = value;
+					OnPropertyChanged("ConnectShow");
 				}
 			}
 		}

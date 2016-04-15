@@ -11,20 +11,38 @@ namespace PhoneApp
 		public Contact ()
 		{
 			vm = new ContactViewModel ();
-			vm.URL="Http://arthurcv.com/";
 			Title="Contact US";
 			BindingContext = vm;
 			InitializeComponent ();
+			ConnectButton.Clicked += OnConnectClick;
+		}
+		void OnConnectClick(object sender, EventArgs e){
+			Device.BeginInvokeOnMainThread(() =>
+				{
+					vm = new ContactViewModel ();
+					this.Title = "Contact US";
+					BindingContext = vm;
+					InitializeComponent ();
+					ConnectButton.Clicked += OnConnectClick;
+				});
 		}
 		void webviewNavigating(object sender, WebNavigatingEventArgs e)
 		{
 			vm.WebViewShow = false;
 			vm.IndicatorShow = true;
+			vm.ConnectShow = false;
 		}
 		void webviewNavigated(object sender, WebNavigatedEventArgs e)
 		{
-			vm.WebViewShow = true;
-			vm.IndicatorShow = false;
+			if (e.Result.ToString () == "Success") {
+				vm.WebViewShow = true;
+				vm.IndicatorShow = false;
+				vm.ConnectShow = false;
+			} else {
+				vm.WebViewShow = false;
+				vm.IndicatorShow = false;
+				vm.ConnectShow = true;
+			}
 		}
 	}
 }

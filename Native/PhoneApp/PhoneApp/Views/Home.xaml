@@ -6,8 +6,9 @@
   	<Grid>
         <Image Source="pageGround.jpg" Aspect="AspectFill" />
 		<StackLayout x:Name="Layout" Padding="10" >
-	      	<SearchBar x:Name="SearchBar" TextColor="Black" Placeholder="Search"   VerticalOptions="Start" ></SearchBar>
-			<ListView x:Name="advertisementListView" ItemTapped="OnItemTapped" RowHeight="80" HasUnevenRows="True">
+	      	<SearchBar x:Name="SearchBar" TextColor="Black" Placeholder="Search" Text="{Binding SearchText}" SearchCommand="{Binding Search}"   VerticalOptions="Start" ></SearchBar>
+	      	<Button Text="Connect internet again" Command="{Binding Connect}" IsVisible="{Binding ConnectShow}" TextColor="Blue"></Button>
+			<ListView x:Name="advertisementListView" ItemsSource="{Binding Data}" ItemTapped="OnItemTapped" RowHeight="80" HasUnevenRows="True">
 		        <ListView.ItemTemplate>
 		          <DataTemplate>
 		            <ViewCell>
@@ -19,7 +20,7 @@
 		          </DataTemplate>
 		        </ListView.ItemTemplate>
 		      </ListView>
-		      <Picker x:Name="CategoryPicker" HorizontalOptions="Center" ></Picker>
+		      <Picker x:Name="CategoryPicker" HorizontalOptions="Center" SelectedIndex="{Binding CategorySelectedIndex}" ></Picker>
 	    </StackLayout>
     </Grid>
   </ContentPage.Content>

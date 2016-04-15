@@ -12,7 +12,6 @@ namespace PhoneApp
 		public event PropertyChangedEventHandler PropertyChanged;
 		public Advertisement Ad { get; set;}
 
-
 		public ICommand AddCommand { protected set; get; }
 		public AdvertisementDetailViewModel (Advertisement ad)
 		{
@@ -31,6 +30,7 @@ namespace PhoneApp
 				});
 			buttonText=inLocalDB(Ad.Id)?"Delete It From My List":"Bring It In";
 			WebViewShow = false;
+			AddShow = false;
 			IndicatorShow = true;
 		}
 		private string buttonText;
@@ -42,6 +42,25 @@ namespace PhoneApp
 				}
 			}
 		}
+		private bool addShow;
+		public bool AddShow { get{ return addShow; } set{
+				if (addShow != value)
+				{
+					addShow = value;
+					OnPropertyChanged("AddShow");
+				}
+			}
+		}
+		private bool connectShow;
+		public bool ConnectShow { get{ return connectShow; } set{
+				if (connectShow != value)
+				{
+					connectShow = value;
+					OnPropertyChanged("ConnectShow");
+				}
+			}
+		}
+
 		public String URL{ get; set;}
 
 		private bool webViewShow;

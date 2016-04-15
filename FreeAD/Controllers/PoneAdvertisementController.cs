@@ -25,5 +25,9 @@ namespace FreeAD.Controllers
             var ad = _db.Get<Advertisement>(d => d.Id == id).First();
             return View(ad);
         }
+        public ActionResult Contact(int languageId=1)
+        {
+            return View();
+        }
     }
 }
