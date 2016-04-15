@@ -20,10 +20,9 @@ namespace FreeAD.Controllers
             var ad=_db.Get<Advertisement>(d => d.Id == id).First();
             return View(ad);
         }
-        public ActionResult Manual(int id)
+        public ActionResult Manual(int languageId = 1)
         {
-            var ad = _db.Get<Advertisement>(d => d.Id == id).First();
-            return View(ad);
+            return View();
         }
         public ActionResult Contact(int languageId=1)
         {
